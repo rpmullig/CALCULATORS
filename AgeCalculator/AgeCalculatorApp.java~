@@ -1,0 +1,42 @@
+import java.util.*;
+import java.text.*;
+import java.time.*;
+
+public class AgeCalculatorApp
+{
+    public static void main(String[] args)
+    {
+        //Get the user's birthdate
+        System.out.println("Welcome to the age calculator.");
+        Scanner sc = new Scanner(System.in);
+        int birthMonth = Validator.getInt(sc, "Enter the month you were born (1 to 12): ",
+            0, 13);
+        int birthDay = Validator.getInt(sc, "Enter the day of the month you were born: ",
+            0, 32);
+        int birthYear = Validator.getInt(sc, "Enter the year you were born (four digits): ",
+        1874, 2005);
+        
+        String dateToday;
+        String dateBirthDay;
+        GregorianCalendar birthday_date;
+        Date today;
+        DateFormat dateFormatter;
+        
+        dateFormatter = DateFormat.getDateInstance(DateFormat.FULL);
+                
+        birthday_date = new GregorianCalendar(birthYear, birthMonth, birthDay);
+        
+        birthday_date.set(Calendar.YEAR, birthYear);
+        birthday_date.set(Calendar.MONTH, birthMonth);
+        birthday_date.set(Calendar.DAY_OF_YEAR, birthDay); 
+        
+
+        today = new Date();
+        dateToday = dateFormatter.format(today);
+        
+        System.out.println("Your birth date is " + birthday_date.get(Calendar.MONTH, Calendar.DATE, Calendar.DAY_OF_YEAR)); 
+        System.out.println("Today's date is " + dateToday); 
+     
+        System.out.println("Your age is: " ); 
+    }
+}
